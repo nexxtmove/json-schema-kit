@@ -1,6 +1,6 @@
 # JSON Schema Kit
 
-Some (very) simple helper functions to write JSON Schema more concisely.
+Some [very simple](index.ts) helper functions to write JSON Schema more concisely.
 
 <a href="https://www.npmjs.com/package/json-schema-kit" target="_blank"><img src="https://img.shields.io/npm/v/json-schema-kit?style=flat-square&color=green" alt="Version"></a>
 <a href="https://www.npmjs.com/package/json-schema-kit" target="_blank"><img src="https://img.shields.io/npm/l/json-schema-kit?style=flat-square&color=green" alt="License"></a>
