@@ -38,10 +38,7 @@ export function number(schema: Schema<number> = {}): Schema<number> {
   }
 }
 
-export function array<T>(
-  itemSchema: Schema<T>,
-  schema: Schema<T[]> = {}
-): Schema<T[]> {
+export function array<T>(itemSchema: Schema<T>, schema: Schema<T[]> = {}): Schema<T[]> {
   return {
     type: 'array',
     items: itemSchema,
@@ -49,10 +46,7 @@ export function array<T>(
   }
 }
 
-export function object(
-  properties: Object,
-  schema: Schema<Object> = {}
-): Schema<Object> {
+export function object(properties: Object, schema: Schema<Object> = {}): Schema<Object> {
   return {
     type: 'object',
     properties,
@@ -69,10 +63,7 @@ export function extend(schema: Schema<Object>, properties: Object): void {
   }
 }
 
-export function anyOf<T>(
-  subschemas: Schema<T>[],
-  schema: Schema<T> = {}
-): Schema<T> {
+export function anyOf<T>(subschemas: Schema<T>[], schema: Schema<T> = {}): Schema<T> {
   return {
     anyOf: subschemas,
     ...schema,

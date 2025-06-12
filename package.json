@@ -6,6 +6,7 @@
   "license": "MIT",
   "prettier": {
     "singleQuote": true,
-    "semi": false
+    "semi": false,
+    "printWidth": 100
   }
 }
