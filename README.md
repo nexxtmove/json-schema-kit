@@ -43,3 +43,6 @@ object({
 ```
 
 ✅ Clean and readable
+
+## Why not Zod?
+Zod is a versatile and comprehensive library, spanning thousands of lines of code. However, it's not specifically built for generating JSON Schemas, which can lead to unexpected results during conversion. In contrast, JSON Schema Kit provides full control — all in under 100 lines of code.
