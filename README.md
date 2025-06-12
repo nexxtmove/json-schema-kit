@@ -2,6 +2,9 @@
 
 Some (very) simple helper functions to write JSON Schema more concisely.
 
+![NPM Version](https://img.shields.io/npm/v/json-schema-kit?color=green)
+![License](https://img.shields.io/github/license/nexxtmove/json-schema-kit?color=green)
+
 ```ts
 import { object, string, number, array } from 'json-schema-kit'
 
