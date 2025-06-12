@@ -1,0 +1,11 @@
+{
+  "name": "json-schema-kit",
+  "description": "Some (very) simple helper functions to write JSON Schema more concisely",
+  "version": "0.1.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
+  }
+}
