@@ -2,6 +2,14 @@
 
 Some (very) simple helper functions to write JSON Schema more concisely.
 
+```ts
+object({
+  name: string(),
+  price: number({ description: 'Price in dollars' }),
+  tags: array(string()),
+})
+```
+
 ### Traditional JSON Schema
 
 ```json
@@ -37,12 +45,13 @@ object({
   dimensions: object({
     length: number(),
     width: number(),
-    height: number()
-  })
+    height: number(),
+  }),
 })
 ```
 
 ✅ Clean and readable
 
 ## Why not Zod?
+
 Zod is a versatile and comprehensive library, spanning thousands of lines of code. However, it's not specifically built for generating JSON Schemas, which can lead to unexpected results during conversion. In contrast, JSON Schema Kit provides full control — all in under 100 lines of code.
