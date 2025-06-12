@@ -3,17 +3,14 @@
 Some (very) simple helper functions to write JSON Schema more concisely.
 
 ### From
+
 ```json
 {
   "type": "object",
   "properties": {
-    "name": { "type": "string", "description": "Name of the product" },
-    "price": { "type": "number", "description": "The price of the product" },
-    "tags": {
-      "type": "array",
-      "description": "Tags for the product",
-      "items": { "type": "string" }
-    },
+    "name": { "type": "string" },
+    "price": { "type": "number", "description": "Price in dollars" },
+    "tags": { "type": "array", "items": { "type": "string" } },
     "dimensions": {
       "type": "object",
       "properties": {
@@ -29,13 +26,14 @@ Some (very) simple helper functions to write JSON Schema more concisely.
 ```
 
 ### To
+
 ```ts
 import { object, string, number } from 'json-schema-kit'
 
 object({
-  name: string({ description: 'Name of the product' }),
-  price: number({ description: 'The price of the product' }),
-  tags: array(string(), { description: 'Tags for the product' }),
+  name: string(),
+  price: number({ description: 'Price in dollars' }),
+  tags: array(string()),
   dimensions: object({
     length: number(),
     width: number(),
