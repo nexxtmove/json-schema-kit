@@ -10,6 +10,13 @@ object({
 })
 ```
 
+## Install
+```bash
+npm install json-schema-kit
+```
+
+## Comparison
+
 ### Traditional JSON Schema
 
 ```json
