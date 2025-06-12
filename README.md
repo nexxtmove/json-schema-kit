@@ -2,7 +2,7 @@
 
 Some (very) simple helper functions to write JSON Schema more concisely.
 
-### From
+### Traditional JSON Schema
 
 ```json
 {
@@ -25,11 +25,11 @@ Some (very) simple helper functions to write JSON Schema more concisely.
 }
 ```
 
-### To
+> Powerful but verbose
+
+### With JSON Schema Kit
 
 ```ts
-import { object, string, number } from 'json-schema-kit'
-
 object({
   name: string(),
   price: number({ description: 'Price in dollars' }),
@@ -41,3 +41,5 @@ object({
   })
 })
 ```
+
+> Clean and readable
