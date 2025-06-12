@@ -56,13 +56,6 @@ export function object(properties: Object, schema: Schema<Object> = {}): Schema<
   }
 }
 
-export function extend(schema: Schema<Object>, properties: Object): void {
-  for (const [key, value] of Object.entries(properties)) {
-    schema.properties![key] = value
-    schema.required!.push(key)
-  }
-}
-
 export function anyOf<T>(subschemas: Schema<T>[], schema: Schema<T> = {}): Schema<T> {
   return {
     anyOf: subschemas,
