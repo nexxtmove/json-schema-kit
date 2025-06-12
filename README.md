@@ -3,6 +3,8 @@
 Some (very) simple helper functions to write JSON Schema more concisely.
 
 ```ts
+import { object, string, number, array } from 'json-schema-kit'
+
 object({
   name: string(),
   price: number({ description: 'Price in dollars' }),
@@ -11,6 +13,7 @@ object({
 ```
 
 ## Install
+
 ```bash
 npm install json-schema-kit
 ```
@@ -42,7 +45,7 @@ npm install json-schema-kit
 
 🤔 Powerful but verbose
 
-### With JSON Schema Kit
+### Using JSON Schema Kit
 
 ```ts
 object({
