@@ -25,7 +25,7 @@ Some (very) simple helper functions to write JSON Schema more concisely.
 }
 ```
 
-Powerful but verbose
+🤔 Powerful but verbose
 
 ### With JSON Schema Kit
 
@@ -42,4 +42,4 @@ object({
 })
 ```
 
-Clean and readable
+✅ Clean and readable
