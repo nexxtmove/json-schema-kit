@@ -12,25 +12,34 @@ import type {
 } from './types'
 
 export function string(properties: Partial<StringSchema> = {}): StringSchema {
-  return { type: 'string', ...properties }
+  return {
+    type: 'string',
+    ...properties,
+  }
 }
 
 export function number(properties: Partial<NumberSchema> = {}): NumberSchema {
-  return { type: 'number', ...properties }
+  return {
+    type: 'number',
+    ...properties,
+  }
 }
 
 export function integer(properties: Partial<IntegerSchema> = {}): IntegerSchema {
-  return { type: 'integer', ...properties }
+  return {
+    type: 'integer',
+    ...properties,
+  }
 }
 
 export function boolean(properties: Partial<BooleanSchema> = {}): BooleanSchema {
-  return { type: 'boolean', ...properties }
+  return {
+    type: 'boolean',
+    ...properties,
+  }
 }
 
-export function object(
-  members: Record<string, Schema>,
-  properties: Partial<ObjectSchema> = {}
-): ObjectSchema {
+export function object(members: Record<string, Schema>, properties: Partial<ObjectSchema> = {}): ObjectSchema {
   return {
     type: 'object',
     properties: members,
@@ -41,15 +50,23 @@ export function object(
 }
 
 export function array(itemSchema: Schema, properties: Partial<ArraySchema> = {}): ArraySchema {
-  return { type: 'array', items: itemSchema, ...properties }
+  return {
+    type: 'array',
+    items: itemSchema,
+    ...properties,
+  }
 }
 
 export function $ref(id: string): RefSchema {
-  return { $ref: `#/$defs/${id}` }
+  return {
+    $ref: `#/$defs/${id}`,
+  }
 }
 
 export function anyOf(subschemas: AnyOfable[]): AnyOfSchema {
-  return { anyOf: subschemas }
+  return {
+    anyOf: subschemas,
+  }
 }
 
 // If schema doesn't have a `type` property, it will be converted to an AnyOfSchema
