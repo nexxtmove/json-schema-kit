@@ -65,6 +65,38 @@ object({
 })
 ```
 
+## 🔗 Using References
+
+Use `$ref` to create reusable schema definitions and reference them throughout your schema:
+
+```ts
+const person = object({
+  name: string(),
+  age: number(),
+})
+
+object(
+  {
+    leader: $ref('person'),
+    members: array($ref('person')),
+  },
+  {
+    $defs: { person },
+  }
+)
+```
+
+## 🔀 Using Union Types
+
+Create union types using `anyOf` to allow multiple possible schemas:
+
+```ts
+const contactSchema = anyOf([
+  object({ email: string() }),
+  object({ phone: string() })
+])
+```
+
 ## 🤔 "But what about Zod?"
 
 Great question! Zod is a versatile and comprehensive library, spanning thousands of lines of code. However, it's not specifically built for generating JSON Schemas, which can lead to unexpected results during conversion. In contrast, JSON Schema Kit provides full control — all in under 100 lines of code.
