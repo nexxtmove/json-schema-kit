@@ -75,7 +75,7 @@ const person = object({
   age: number(),
 })
 
-object(
+const team = object(
   {
     leader: $ref('person'),
     members: array($ref('person')),
@@ -91,7 +91,7 @@ object(
 Create union types using `anyOf` to allow multiple possible schemas:
 
 ```ts
-const contactSchema = anyOf([
+const contactInfo = anyOf([
   object({ email: string() }),
   object({ phone: string() })
 ])
