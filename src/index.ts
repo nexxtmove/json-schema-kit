@@ -8,7 +8,7 @@ import type {
   ArraySchema,
   AnyOfSchema,
   RefSchema,
-  NullableSchema,
+  AnyOfable,
 } from './types'
 
 export function string(properties: Partial<StringSchema> = {}): StringSchema {
@@ -44,14 +44,25 @@ export function array(itemSchema: Schema, properties: Partial<ArraySchema> = {})
   return { type: 'array', items: itemSchema, ...properties }
 }
 
-export function anyOf(subschemas: ObjectSchema[]): AnyOfSchema {
-  return { anyOf: subschemas }
-}
-
 export function $ref(id: string): RefSchema {
   return { $ref: `#/$defs/${id}` }
 }
 
-export function nullable<T extends NullableSchema>(schema: T): T {
-  return { ...schema, type: [schema.type, 'null'] }
+export function anyOf(subschemas: AnyOfable[]): AnyOfSchema {
+  return { anyOf: subschemas }
+}
+
+// If schema doesn't have a `type` property, it will be converted to an AnyOfSchema
+export type NullableSchema<T> = T extends { type: any } ? T : AnyOfSchema
+
+export function nullable<T extends Schema>(schema: T): NullableSchema<T> {
+  if ('type' in schema) {
+    return { ...schema, type: [schema.type, 'null'] } as NullableSchema<T>
+  }
+
+  if ('anyOf' in schema) {
+    return anyOf([...schema.anyOf, { type: 'null' }]) as NullableSchema<T>
+  }
+
+  return anyOf([schema, { type: 'null' }]) as NullableSchema<T>
 }
