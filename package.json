@@ -2,7 +2,7 @@
   "name": "json-schema-kit",
   "description": "Some (very) simple helper functions to write JSON Schema more concisely",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "source": "./index.ts",
   "exports": {
