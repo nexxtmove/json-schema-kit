@@ -1,6 +1,6 @@
 # JSON Schema Kit
 
-Some [very simple](https://github.com/nexxtmove/json-schema-kit/blob/main/index.ts) helper functions to write JSON Schema more concisely.
+Some [very simple](https://github.com/nexxtmove/json-schema-kit/blob/main/index.ts) helper functions to write JSON Schema more concisely.  
 Especially useful when working with [OpenAI Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
 <a href="https://www.npmjs.com/package/json-schema-kit" target="_blank"><img src="https://img.shields.io/npm/v/json-schema-kit?style=flat-square&color=green" alt="Version"></a>
