@@ -4,7 +4,7 @@
   "type": "module",
   "version": "0.1.3",
   "license": "MIT",
-  "source": "./index.ts",
+  "source": "./src/index.ts",
   "exports": {
     "require": "./dist/index.cjs",
     "default": "./dist/index.modern.js",
