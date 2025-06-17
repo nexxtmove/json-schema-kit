@@ -36,11 +36,10 @@ npm install json-schema-kit
     "dimensions": {
       "type": "object",
       "properties": {
-        "length": { "type": "number" },
         "width": { "type": "number" },
         "height": { "type": "number" }
       },
-      "required": ["length", "width", "height"],
+      "required": ["width", "height"],
       "additionalProperties": false
     }
   },
@@ -59,7 +58,6 @@ object({
   price: number({ description: 'Price in dollars' }),
   tags: array(string()),
   dimensions: object({
-    length: number(),
     width: number(),
     height: number(),
   }),
