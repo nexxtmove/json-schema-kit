@@ -40,10 +40,12 @@ npm install json-schema-kit
         "width": { "type": "number" },
         "height": { "type": "number" }
       },
-      "required": ["length", "width", "height"]
+      "required": ["length", "width", "height"],
+      "additionalProperties": false
     }
   },
-  "required": ["name", "price", "tags", "dimensions"]
+  "required": ["name", "price", "tags", "dimensions"],
+  "additionalProperties": false
 }
 ```
 
