@@ -1,12 +1,13 @@
-export type NullableSchema =
+export type Schema =
   | StringSchema
   | NumberSchema
   | IntegerSchema
   | BooleanSchema
   | ArraySchema
   | ObjectSchema
-
-export type Schema = NullableSchema | AnyOfSchema | RefSchema
+  | NullSchema
+  | RefSchema
+  | AnyOfSchema
 
 export type BaseSchema<T> = {
   title?: string
@@ -53,10 +54,15 @@ export type ArraySchema = BaseSchema<any[]> & {
   maxItems?: number
 }
 
-export type AnyOfSchema = {
-  anyOf: ObjectSchema[]
+export type NullSchema = {
+  type: 'null'
 }
 
 export type RefSchema = {
   $ref: string
+}
+
+export type AnyOfable = ObjectSchema | RefSchema | NullSchema
+export type AnyOfSchema = {
+  anyOf: AnyOfable[]
 }
