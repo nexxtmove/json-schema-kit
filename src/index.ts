@@ -2,6 +2,7 @@ import type {
   Schema,
   StringSchema,
   NumberSchema,
+  IntegerSchema,
   BooleanSchema,
   ObjectSchema,
   ArraySchema,
@@ -15,6 +16,10 @@ export function string(properties: Partial<StringSchema> = {}): StringSchema {
 
 export function number(properties: Partial<NumberSchema> = {}): NumberSchema {
   return { type: 'number', ...properties }
+}
+
+export function integer(properties: Partial<IntegerSchema> = {}): IntegerSchema {
+  return { type: 'integer', ...properties }
 }
 
 export function boolean(properties: Partial<BooleanSchema> = {}): BooleanSchema {

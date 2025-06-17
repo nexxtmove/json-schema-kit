@@ -1,6 +1,7 @@
 export type Schema =
   | StringSchema
   | NumberSchema
+  | IntegerSchema
   | BooleanSchema
   | ArraySchema
   | ObjectSchema
@@ -36,6 +37,10 @@ export type NumberSchema = BaseSchema<number> & {
   exclusiveMaximum?: number
   minimum?: number
   exclusiveMinimum?: number
+}
+
+export type IntegerSchema = NumberSchema & {
+  type: 'integer'
 }
 
 export type BooleanSchema = BaseSchema<boolean> & {
