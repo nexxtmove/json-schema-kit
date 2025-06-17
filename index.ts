@@ -1,71 +1,47 @@
-export type Object = Record<string, Schema>
+import type {
+  Schema,
+  StringSchema,
+  NumberSchema,
+  BooleanSchema,
+  ObjectSchema,
+  ArraySchema,
+  AnyOfSchema,
+  RefSchema,
+} from './types'
 
-export type Schema<T = unknown> = {
-  type?: 'string' | 'number' | 'boolean' | 'array' | 'object'
-  anyOf?: Schema<T>[]
-  $ref?: string
-
-  items?: Schema
-  description?: string
-  const?: T
-  enum?: T[]
-
-  properties?: Object
-  required?: string[]
-  additionalProperties?: boolean
-
-  $defs?: Object
+export function string(properties: Partial<StringSchema> = {}): StringSchema {
+  return { type: 'string', ...properties }
 }
 
-export function string(schema: Schema<string> = {}): Schema<string> {
-  return {
-    type: 'string',
-    ...schema,
-  }
+export function number(properties: Partial<NumberSchema> = {}): NumberSchema {
+  return { type: 'number', ...properties }
 }
 
-export function boolean(schema: Schema<boolean> = {}): Schema<boolean> {
-  return {
-    type: 'boolean',
-    ...schema,
-  }
+export function boolean(properties: Partial<BooleanSchema> = {}): BooleanSchema {
+  return { type: 'boolean', ...properties }
 }
 
-export function number(schema: Schema<number> = {}): Schema<number> {
-  return {
-    type: 'number',
-    ...schema,
-  }
-}
-
-export function array<T>(itemSchema: Schema<T>, schema: Schema<T[]> = {}): Schema<T[]> {
-  return {
-    type: 'array',
-    items: itemSchema,
-    ...schema,
-  }
-}
-
-export function object(properties: Object, schema: Schema<Object> = {}): Schema<Object> {
+export function object(
+  members: Record<string, Schema>,
+  properties: Partial<ObjectSchema> = {}
+): ObjectSchema {
   return {
     type: 'object',
-    properties,
-    required: Object.keys(properties),
+    properties: members,
+    required: Object.keys(members),
     additionalProperties: false,
-    ...schema,
+    ...properties,
   }
 }
 
-export function anyOf<T>(subschemas: Schema<T>[], schema: Schema<T> = {}): Schema<T> {
-  return {
-    anyOf: subschemas,
-    ...schema,
-  }
+export function array(itemSchema: Schema, properties: Partial<ArraySchema> = {}): ArraySchema {
+  return { type: 'array', items: itemSchema, ...properties }
 }
 
-export function $ref<T>(id: string, schema: Schema<T> = {}): Schema<T> {
-  return {
-    $ref: `#/$defs/${id}`,
-    ...schema,
-  }
+export function anyOf(subschemas: ObjectSchema[]): AnyOfSchema {
+  return { anyOf: subschemas }
+}
+
+export function $ref(id: string): RefSchema {
+  return { $ref: `#/$defs/${id}` }
 }
