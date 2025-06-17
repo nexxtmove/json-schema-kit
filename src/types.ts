@@ -38,7 +38,7 @@ export type BooleanSchema = BaseSchema<boolean> & {
   type: 'boolean' | ['boolean', 'null']
 }
 
-export type ObjectSchema = BaseSchema<any> & {
+export type ObjectSchema = BaseSchema<Record<string, any>> & {
   type: 'object' | ['object', 'null']
   properties: Record<string, Schema>
   required: string[]
