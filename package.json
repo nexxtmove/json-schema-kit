@@ -2,18 +2,18 @@
   "name": "json-schema-kit",
   "description": "Some (very) simple helper functions to write JSON Schema more concisely",
   "type": "module",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "MIT",
   "source": "./index.ts",
   "exports": {
-    "require": "./dist/json-schema-kit.cjs",
-    "default": "./dist/json-schema-kit.modern.js",
-    "types": "./dist/json-schema-kit.d.ts"
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js",
+    "types": "./dist/index.d.ts"
   },
-  "main": "./dist/json-schema-kit.cjs",
-  "umd:main": "./dist/json-schema-kit.umd.js",
-  "module": "./dist/json-schema-kit.module.js",
-  "types": "./dist/json-schema-kit.d.ts",
+  "main": "./dist/index.cjs",
+  "umd:main": "./dist/index.umd.js",
+  "module": "./dist/index.module.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "microbundle"
   },
