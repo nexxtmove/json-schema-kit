@@ -1,10 +1,12 @@
 # 🧰 JSON Schema Kit
 
 Some [very simple](https://github.com/nexxtmove/json-schema-kit/blob/main/index.ts) helper functions to write JSON Schema more concisely.  
-Especially useful when working with [OpenAI Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
+Perfect for [OpenAI Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs) and anywhere else you need clean, readable schemas.
 
 <a href="https://www.npmjs.com/package/json-schema-kit" target="_blank"><img src="https://img.shields.io/npm/v/json-schema-kit?style=flat-square&color=green" alt="Version"></a>
 <a href="https://www.npmjs.com/package/json-schema-kit" target="_blank"><img src="https://img.shields.io/npm/l/json-schema-kit?style=flat-square&color=green" alt="License"></a>
+
+## ✨ Quick Taste
 
 ```ts
 import { object, string, number, array } from 'json-schema-kit'
@@ -16,13 +18,13 @@ object({
 })
 ```
 
-## Install
+## 🚀 Installation
 
 ```bash
 npm install json-schema-kit
 ```
 
-## Comparison
+## 🆚 Comparison
 
 ### Traditional JSON Schema
 
@@ -48,8 +50,6 @@ npm install json-schema-kit
 }
 ```
 
-🤔 Powerful but verbose
-
 ### Using JSON Schema Kit
 
 ```ts
@@ -64,8 +64,6 @@ object({
 })
 ```
 
-✅ Clean and readable
+## 🤔 "But what about Zod?"
 
-## Why not Zod?
-
-Zod is a versatile and comprehensive library, spanning thousands of lines of code. However, it's not specifically built for generating JSON Schemas, which can lead to unexpected results during conversion. In contrast, JSON Schema Kit provides full control — all in under 100 lines of code.
+Great question! Zod is a versatile and comprehensive library, spanning thousands of lines of code. However, it's not specifically built for generating JSON Schemas, which can lead to unexpected results during conversion. In contrast, JSON Schema Kit provides full control — all in under 100 lines of code.
