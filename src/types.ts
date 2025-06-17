@@ -18,16 +18,7 @@ export type BaseSchema<T> = {
 export type StringSchema = BaseSchema<string> & {
   type: 'string' | ['string', 'null']
   pattern?: string
-  format?:
-    | 'date-time'
-    | 'time'
-    | 'date'
-    | 'duration'
-    | 'email'
-    | 'hostname'
-    | 'ipv4'
-    | 'ipv6'
-    | 'uuid'
+  format?: string
 }
 
 export type NumberSchema = BaseSchema<number> & {
