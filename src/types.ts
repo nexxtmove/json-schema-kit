@@ -39,7 +39,7 @@ export type NumberSchema = BaseSchema<number> & {
   exclusiveMinimum?: number
 }
 
-export type IntegerSchema = NumberSchema & {
+export type IntegerSchema = Omit<NumberSchema, 'type'> & {
   type: 'integer'
 }
 
