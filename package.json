@@ -1,6 +1,6 @@
 {
   "name": "json-schema-kit",
-  "description": "Some (very) simple helper functions to write JSON Schema more concisely",
+  "description": "Some (very) simple helper functions for writing concise JSON Schema — perfect for OpenAI Structured Outputs.",
   "type": "module",
   "version": "0.1.3",
   "license": "MIT",
