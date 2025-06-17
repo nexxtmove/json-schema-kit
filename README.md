@@ -1,4 +1,4 @@
-# JSON Schema Kit
+# 🧰 JSON Schema Kit
 
 Some [very simple](https://github.com/nexxtmove/json-schema-kit/blob/main/index.ts) helper functions to write JSON Schema more concisely.  
 Especially useful when working with [OpenAI Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
