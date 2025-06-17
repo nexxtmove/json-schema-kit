@@ -33,6 +33,7 @@ npm install json-schema-kit
   "properties": {
     "name": { "type": "string" },
     "price": { "type": "number", "description": "Price in dollars" },
+    "discount": { "type": ["number", "null"] },
     "tags": { "type": "array", "items": { "type": "string" } },
     "dimensions": {
       "type": "object",
@@ -55,6 +56,7 @@ npm install json-schema-kit
 object({
   name: string(),
   price: number({ description: 'Price in dollars' }),
+  discount: nullable(number()),
   tags: array(string()),
   dimensions: object({
     width: number(),

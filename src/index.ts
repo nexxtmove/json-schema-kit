@@ -8,6 +8,7 @@ import type {
   ArraySchema,
   AnyOfSchema,
   RefSchema,
+  NullableSchema,
 } from './types'
 
 export function string(properties: Partial<StringSchema> = {}): StringSchema {
@@ -49,4 +50,8 @@ export function anyOf(subschemas: ObjectSchema[]): AnyOfSchema {
 
 export function $ref(id: string): RefSchema {
   return { $ref: `#/$defs/${id}` }
+}
+
+export function nullable<T extends NullableSchema>(schema: T): T {
+  return { ...schema, type: [schema.type, 'null'] }
 }

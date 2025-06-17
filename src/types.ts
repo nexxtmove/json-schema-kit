@@ -1,12 +1,12 @@
-export type Schema =
+export type NullableSchema =
   | StringSchema
   | NumberSchema
   | IntegerSchema
   | BooleanSchema
   | ArraySchema
   | ObjectSchema
-  | AnyOfSchema
-  | RefSchema
+
+export type Schema = NullableSchema | AnyOfSchema | RefSchema
 
 export type BaseSchema<T> = {
   title?: string
@@ -16,7 +16,7 @@ export type BaseSchema<T> = {
 }
 
 export type StringSchema = BaseSchema<string> & {
-  type: 'string'
+  type: 'string' | ['string', 'null']
   pattern?: string
   format?:
     | 'date-time'
@@ -31,7 +31,7 @@ export type StringSchema = BaseSchema<string> & {
 }
 
 export type NumberSchema = BaseSchema<number> & {
-  type: 'number'
+  type: 'number' | ['number', 'null']
   multipleOf?: number
   maximum?: number
   exclusiveMaximum?: number
@@ -40,15 +40,15 @@ export type NumberSchema = BaseSchema<number> & {
 }
 
 export type IntegerSchema = Omit<NumberSchema, 'type'> & {
-  type: 'integer'
+  type: 'integer' | ['integer', 'null']
 }
 
 export type BooleanSchema = BaseSchema<boolean> & {
-  type: 'boolean'
+  type: 'boolean' | ['boolean', 'null']
 }
 
 export type ObjectSchema = BaseSchema<any> & {
-  type: 'object'
+  type: 'object' | ['object', 'null']
   properties: Record<string, Schema>
   required: string[]
   additionalProperties: boolean
@@ -56,7 +56,7 @@ export type ObjectSchema = BaseSchema<any> & {
 }
 
 export type ArraySchema = BaseSchema<any[]> & {
-  type: 'array'
+  type: 'array' | ['array', 'null']
   items: Schema
   minItems?: number
   maxItems?: number
