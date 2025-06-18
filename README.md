@@ -2,8 +2,9 @@
 
 Some [very simple](https://github.com/nexxtmove/json-schema-kit/blob/main/src/index.ts) helper functions for writing concise JSON Schema — perfect for [OpenAI Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs).
 
-<a href="https://www.npmjs.com/package/json-schema-kit" target="_blank"><img src="https://img.shields.io/npm/v/json-schema-kit?style=flat-square&color=green" alt="Version"></a>
-<a href="https://www.npmjs.com/package/json-schema-kit" target="_blank"><img src="https://img.shields.io/npm/l/json-schema-kit?style=flat-square&color=green" alt="License"></a>
+<a href="https://www.npmjs.com/package/json-schema-kit" target="_blank"><img src="https://img.shields.io/npm/v/json-schema-kit?style=flat-square&color=%234c1" alt="Version"></a>
+<a href="https://www.npmjs.com/package/json-schema-kit" target="_blank"><img src="https://img.shields.io/npm/l/json-schema-kit?style=flat-square&color=%234c1" alt="License"></a>
+<a href="https://github.com/nexxtmove/json-schema-kit/actions" target="_blank"><img src="https://img.shields.io/github/actions/workflow/status/nexxtmove/json-schema-kit/tests.yml?label=tests&style=flat-square&color=%234c1" alt="Tests"></a>
 
 ## ✨ Quick Taste
 
