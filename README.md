@@ -17,8 +17,8 @@ object({
 })
 ```
 
-All functions just return standard JSON Schema as plain JavaScript objects.  
-You can easily modify or extend them with your own properties.
+> All functions just return standard JSON Schema as plain JavaScript objects.  
+> You can easily modify or extend them with your own properties.
 
 ## 🚀 Installation
 
