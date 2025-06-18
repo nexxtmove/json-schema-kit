@@ -4,6 +4,11 @@
   "type": "module",
   "version": "0.2.0",
   "license": "MIT",
+  "tags": [
+    "json-schema",
+    "openai",
+    "structured-outputs"
+  ],
   "source": "./src/index.ts",
   "exports": {
     "require": "./dist/index.cjs",
