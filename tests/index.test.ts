@@ -1,60 +1,50 @@
-import {
-  string,
-  number,
-  integer,
-  boolean,
-  object,
-  array,
-  $ref,
-  anyOf,
-  nullable,
-} from '../src/index';
+import { string, number, integer, boolean, object, array, $ref, anyOf, nullable } from '../src/index'
 
 describe('JSON Schema Kit', () => {
   describe('string()', () => {
     it('should create basic string schema', () => {
-      const result = string();
+      const result = string()
       expect(result).toEqual({
         type: 'string',
-      });
-    });
+      })
+    })
 
     it('should accept additional properties', () => {
       const result = string({
         description: 'A name field',
         pattern: '^[A-Za-z]+$',
         format: 'email',
-      });
+      })
       expect(result).toEqual({
         type: 'string',
         description: 'A name field',
         pattern: '^[A-Za-z]+$',
         format: 'email',
-      });
-    });
+      })
+    })
 
     it('should preserve custom properties', () => {
       const result = string({
         title: 'Name',
         const: 'fixed-value',
         enum: ['option1', 'option2'],
-      });
+      })
       expect(result).toEqual({
         type: 'string',
         title: 'Name',
         const: 'fixed-value',
         enum: ['option1', 'option2'],
-      });
-    });
-  });
+      })
+    })
+  })
 
   describe('number()', () => {
     it('should create basic number schema', () => {
-      const result = number();
+      const result = number()
       expect(result).toEqual({
         type: 'number',
-      });
-    });
+      })
+    })
 
     it('should accept additional properties', () => {
       const result = number({
@@ -62,79 +52,79 @@ describe('JSON Schema Kit', () => {
         minimum: 0,
         maximum: 1000,
         multipleOf: 0.01,
-      });
+      })
       expect(result).toEqual({
         type: 'number',
         description: 'Price in dollars',
         minimum: 0,
         maximum: 1000,
         multipleOf: 0.01,
-      });
-    });
+      })
+    })
 
     it('should handle exclusive bounds', () => {
       const result = number({
         exclusiveMinimum: 0,
         exclusiveMaximum: 100,
-      });
+      })
       expect(result).toEqual({
         type: 'number',
         exclusiveMinimum: 0,
         exclusiveMaximum: 100,
-      });
-    });
-  });
+      })
+    })
+  })
 
   describe('integer()', () => {
     it('should create basic integer schema', () => {
-      const result = integer();
+      const result = integer()
       expect(result).toEqual({
         type: 'integer',
-      });
-    });
+      })
+    })
 
     it('should accept additional properties', () => {
       const result = integer({
         description: 'Age in years',
         minimum: 0,
         maximum: 120,
-      });
+      })
       expect(result).toEqual({
         type: 'integer',
         description: 'Age in years',
         minimum: 0,
         maximum: 120,
-      });
-    });
-  });
+      })
+    })
+  })
 
   describe('boolean()', () => {
     it('should create basic boolean schema', () => {
-      const result = boolean();
+      const result = boolean()
       expect(result).toEqual({
         type: 'boolean',
-      });
-    });
+      })
+    })
 
     it('should accept additional properties', () => {
       const result = boolean({
         description: 'Is active',
         const: true,
-      });
+      })
       expect(result).toEqual({
         type: 'boolean',
         description: 'Is active',
         const: true,
-      });
-    });
-  });
+      })
+    })
+  })
 
   describe('object()', () => {
     it('should create basic object schema', () => {
       const result = object({
         name: string(),
         age: number(),
-      });
+      })
       expect(result).toEqual({
         type: 'object',
         properties: {
@@ -143,8 +133,8 @@ describe('JSON Schema Kit', () => {
         },
         required: ['name', 'age'],
         additionalProperties: false,
-      });
-    });
+      })
+    })
 
     it('should accept additional properties', () => {
       const result = object(
@@ -156,7 +146,7 @@ describe('JSON Schema Kit', () => {
           title: 'Person',
           additionalProperties: true,
         }
-      );
+      )
       expect(result).toEqual({
         type: 'object',
         properties: {
@@ -166,8 +156,8 @@ describe('JSON Schema Kit', () => {
         additionalProperties: true,
         description: 'A person object',
         title: 'Person',
-      });
-    });
+      })
+    })
 
     it('should handle nested objects', () => {
       const result = object({
@@ -178,7 +168,7 @@ describe('JSON Schema Kit', () => {
         metadata: object({
           createdAt: string({ format: 'date-time' }),
         }),
-      });
+      })
       expect(result).toEqual({
         type: 'object',
         properties: {
@@ -202,14 +192,14 @@ describe('JSON Schema Kit', () => {
         },
         required: ['user', 'metadata'],
         additionalProperties: false,
-      });
-    });
+      })
+    })
 
     it('should handle $defs', () => {
       const personSchema = object({
         name: string(),
         age: number(),
-      });
+      })
 
       const result = object(
         {
@@ -218,7 +208,7 @@ describe('JSON Schema Kit', () => {
         {
           $defs: { person: personSchema },
         }
-      );
+      )
 
       expect(result).toEqual({
         type: 'object',
@@ -238,50 +228,52 @@ describe('JSON Schema Kit', () => {
             additionalProperties: false,
           },
         },
-      });
-    });
-  });
+      })
+    })
+  })
 
   describe('array()', () => {
     it('should create basic array schema', () => {
-      const result = array(string());
+      const result = array(string())
       expect(result).toEqual({
         type: 'array',
         items: { type: 'string' },
-      });
-    });
+      })
+    })
 
     it('should accept additional properties', () => {
       const result = array(number(), {
         description: 'List of prices',
         minItems: 1,
         maxItems: 10,
-      });
+      })
       expect(result).toEqual({
         type: 'array',
         items: { type: 'number' },
         description: 'List of prices',
         minItems: 1,
         maxItems: 10,
-      });
-    });
+      })
+    })
 
     it('should handle nested arrays', () => {
-      const result = array(array(string()));
+      const result = array(array(string()))
       expect(result).toEqual({
         type: 'array',
         items: {
           type: 'array',
           items: { type: 'string' },
         },
-      });
-    });
+      })
+    })
 
     it('should handle arrays of objects', () => {
-      const result = array(object({
-        id: integer(),
-        name: string(),
-      }));
+      const result = array(
+        object({
+          id: integer(),
+          name: string(),
+        })
+      )
       expect(result).toEqual({
         type: 'array',
         items: {
@@ -293,31 +285,28 @@ describe('JSON Schema Kit', () => {
           required: ['id', 'name'],
           additionalProperties: false,
         },
-      });
-    });
-  });
+      })
+    })
+  })
 
   describe('$ref()', () => {
     it('should create reference schema', () => {
-      const result = $ref('person');
+      const result = $ref('person')
       expect(result).toEqual({
         $ref: '#/$defs/person',
-      });
-    });
+      })
+    })
 
     it('should handle different reference names', () => {
-      expect($ref('user')).toEqual({ $ref: '#/$defs/user' });
-      expect($ref('address')).toEqual({ $ref: '#/$defs/address' });
-      expect($ref('nested-schema')).toEqual({ $ref: '#/$defs/nested-schema' });
-    });
-  });
+      expect($ref('user')).toEqual({ $ref: '#/$defs/user' })
+      expect($ref('address')).toEqual({ $ref: '#/$defs/address' })
+      expect($ref('nested-schema')).toEqual({ $ref: '#/$defs/nested-schema' })
+    })
+  })
 
   describe('anyOf()', () => {
     it('should create basic anyOf schema', () => {
-      const result = anyOf([
-        object({ email: string() }),
-        object({ phone: string() }),
-      ]);
+      const result = anyOf([object({ email: string() }), object({ phone: string() })])
       expect(result).toEqual({
         anyOf: [
           {
@@ -333,27 +322,18 @@ describe('JSON Schema Kit', () => {
             additionalProperties: false,
           },
         ],
-      });
-    });
+      })
+    })
 
     it('should handle references in anyOf', () => {
-      const result = anyOf([
-        $ref('person'),
-        $ref('company'),
-      ]);
+      const result = anyOf([$ref('person'), $ref('company')])
       expect(result).toEqual({
-        anyOf: [
-          { $ref: '#/$defs/person' },
-          { $ref: '#/$defs/company' },
-        ],
-      });
-    });
+        anyOf: [{ $ref: '#/$defs/person' }, { $ref: '#/$defs/company' }],
+      })
+    })
 
     it('should handle null in anyOf', () => {
-      const result = anyOf([
-        object({ name: string() }),
-        { type: 'null' },
-      ]);
+      const result = anyOf([object({ name: string() }), { type: 'null' }])
       expect(result).toEqual({
         anyOf: [
           {
@@ -364,64 +344,61 @@ describe('JSON Schema Kit', () => {
           },
           { type: 'null' },
         ],
-      });
-    });
-  });
+      })
+    })
+  })
 
   describe('nullable()', () => {
     it('should make string nullable', () => {
-      const result = nullable(string());
+      const result = nullable(string())
       expect(result).toEqual({
         type: ['string', 'null'],
-      });
-    });
+      })
+    })
 
     it('should make number nullable', () => {
-      const result = nullable(number({ minimum: 0 }));
+      const result = nullable(number({ minimum: 0 }))
       expect(result).toEqual({
         type: ['number', 'null'],
         minimum: 0,
-      });
-    });
+      })
+    })
 
     it('should make integer nullable', () => {
-      const result = nullable(integer());
+      const result = nullable(integer())
       expect(result).toEqual({
         type: ['integer', 'null'],
-      });
-    });
+      })
+    })
 
     it('should make boolean nullable', () => {
-      const result = nullable(boolean());
+      const result = nullable(boolean())
       expect(result).toEqual({
         type: ['boolean', 'null'],
-      });
-    });
+      })
+    })
 
     it('should make object nullable', () => {
-      const result = nullable(object({ name: string() }));
+      const result = nullable(object({ name: string() }))
       expect(result).toEqual({
         type: ['object', 'null'],
         properties: { name: { type: 'string' } },
         required: ['name'],
         additionalProperties: false,
-      });
-    });
+      })
+    })
 
     it('should make array nullable', () => {
-      const result = nullable(array(string()));
+      const result = nullable(array(string()))
       expect(result).toEqual({
         type: ['array', 'null'],
         items: { type: 'string' },
-      });
-    });
+      })
+    })
 
     it('should handle anyOf schemas', () => {
-      const anyOfSchema = anyOf([
-        object({ email: string() }),
-        object({ phone: string() }),
-      ]);
-      const result = nullable(anyOfSchema);
+      const anyOfSchema = anyOf([object({ email: string() }), object({ phone: string() })])
+      const result = nullable(anyOfSchema)
       expect(result).toEqual({
         anyOf: [
           {
@@ -438,20 +415,17 @@ describe('JSON Schema Kit', () => {
           },
           { type: 'null' },
         ],
-      });
-    });
+      })
+    })
 
     it('should handle reference schemas', () => {
-      const refSchema = $ref('person');
-      const result = nullable(refSchema);
+      const refSchema = $ref('person')
+      const result = nullable(refSchema)
       expect(result).toEqual({
-        anyOf: [
-          { $ref: '#/$defs/person' },
-          { type: 'null' },
-        ],
-      });
-    });
-  });
+        anyOf: [{ $ref: '#/$defs/person' }, { type: 'null' }],
+      })
+    })
+  })
 
   describe('Full example schemas', () => {
     it('should create a product schema', () => {
@@ -464,7 +438,7 @@ describe('JSON Schema Kit', () => {
           width: number(),
           height: number(),
         }),
-      });
+      })
 
       expect(result).toEqual({
         type: 'object',
@@ -485,14 +459,14 @@ describe('JSON Schema Kit', () => {
         },
         required: ['name', 'price', 'discount', 'tags', 'dimensions'],
         additionalProperties: false,
-      });
-    });
+      })
+    })
 
     it('should create a schema with references', () => {
       const person = object({
         name: string(),
         age: number(),
-      });
+      })
 
       const team = object(
         {
@@ -502,7 +476,7 @@ describe('JSON Schema Kit', () => {
         {
           $defs: { person },
         }
-      );
+      )
 
       expect(team).toEqual({
         type: 'object',
@@ -523,14 +497,11 @@ describe('JSON Schema Kit', () => {
             additionalProperties: false,
           },
         },
-      });
-    });
+      })
+    })
 
     it('should create a union schema', () => {
-      const contactInfo = anyOf([
-        object({ email: string() }),
-        object({ phone: string() }),
-      ]);
+      const contactInfo = anyOf([object({ email: string() }), object({ phone: string() })])
 
       expect(contactInfo).toEqual({
         anyOf: [
@@ -547,7 +518,7 @@ describe('JSON Schema Kit', () => {
             additionalProperties: false,
           },
         ],
-      });
-    });
-  });
-});
+      })
+    })
+  })
+})
