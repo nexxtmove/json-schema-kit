@@ -17,8 +17,7 @@ object({
 })
 ```
 
-> All functions just return plain JavaScript objects.  
-> You can freely modify or extend them however you need.
+> All functions just return plain JavaScript objects. You can freely modify or extend them however you need.
 
 ## 🚀 Installation
 
