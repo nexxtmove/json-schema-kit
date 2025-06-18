@@ -48,7 +48,7 @@ npm install json-schema-kit
       "additionalProperties": false
     }
   },
-  "required": ["name", "price", "tags", "dimensions"],
+  "required": ["name", "price", "discount", "tags", "dimensions"],
   "additionalProperties": false
 }
 ```
