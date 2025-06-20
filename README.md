@@ -85,7 +85,7 @@ const team = object(
   },
   {
     $defs: { person },
-  }
+  },
 )
 ```
 

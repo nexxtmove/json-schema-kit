@@ -1,15 +1,4 @@
-import type {
-  Schema,
-  StringSchema,
-  NumberSchema,
-  IntegerSchema,
-  BooleanSchema,
-  ObjectSchema,
-  ArraySchema,
-  AnyOfSchema,
-  RefSchema,
-  AnyOfable,
-} from './types'
+import type { Schema, StringSchema, NumberSchema, IntegerSchema, BooleanSchema, ObjectSchema, ArraySchema, AnyOfSchema, RefSchema, AnyOfable } from './types'
 
 export function string(properties: Partial<StringSchema> = {}): StringSchema {
   return {

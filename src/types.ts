@@ -1,13 +1,4 @@
-export type Schema =
-  | StringSchema
-  | NumberSchema
-  | IntegerSchema
-  | BooleanSchema
-  | ArraySchema
-  | ObjectSchema
-  | NullSchema
-  | RefSchema
-  | AnyOfSchema
+export type Schema = StringSchema | NumberSchema | IntegerSchema | BooleanSchema | ArraySchema | ObjectSchema | NullSchema | RefSchema | AnyOfSchema
 
 export type BaseSchema<T> = {
   title?: string
