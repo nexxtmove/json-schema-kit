@@ -29,7 +29,9 @@ npm install json-schema-kit
 
 ## 🆚 Comparison
 
-### Traditional JSON Schema
+<details>
+
+<summary>Traditional JSON Schema</summary>
 
 ```json
 {
@@ -54,7 +56,11 @@ npm install json-schema-kit
 }
 ```
 
-### Using JSON Schema Kit
+</details>
+
+<details>
+
+<summary>Using JSON Schema Kit</summary>
 
 ```ts
 object({
@@ -66,6 +72,26 @@ object({
     width: number(),
     height: number(),
   }),
+})
+```
+
+</details>
+
+## 🤖 OpenAI Structured Outputs
+
+JSON Schema Kit is perfectly suited for OpenAI's Structured Outputs.  
+For example, here's how to use it with the Vercel AI SDK:
+
+```ts
+const schema = object({
+  summary: string(),
+  sentiment: string({ enum: ['positive', 'neutral', 'negative'] }),
+})
+
+await generateObject({
+  model: openai(...),
+  schema: jsonSchema(schema),
+  prompt: 'Analyze this review: "Great product, works perfectly!"',
 })
 ```
 
@@ -99,24 +125,6 @@ const contact = anyOf([
   object({ email: string() }),
   object({ phone: string() }),
 ])
-```
-
-## 🤖 OpenAI Structured Outputs
-
-JSON Schema Kit is perfectly suited for OpenAI's Structured Outputs.  
-For example, here's how to use it with the Vercel AI SDK:
-
-```ts
-const schema = object({
-  summary: string(),
-  sentiment: string({ enum: ['positive', 'neutral', 'negative'] }),
-})
-
-await generateObject({
-  model: openai(...),
-  schema: jsonSchema(schema),
-  prompt: 'Analyze this review: "Great product, works perfectly!"',
-})
 ```
 
 ## 🤔 "But what about Zod?"
