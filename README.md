@@ -95,7 +95,7 @@ const team = object(
 Create union types using `anyOf` to allow multiple possible schemas:
 
 ```ts
-const contactInfo = anyOf([
+const contact = anyOf([
   object({ email: string() }),
   object({ phone: string() }),
 ])
