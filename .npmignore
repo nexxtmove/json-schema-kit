@@ -1,5 +1,4 @@
-/src
-/tests
-/.github
-.prettierrc
-jest.config.js
+**/*
+!/dist/**
+!LICENSE
+!README.md
