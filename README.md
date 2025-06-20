@@ -15,7 +15,7 @@ object({
   name: string(),
   price: number({ minimum: 0 }),
   description: nullable(string()),
-  tags: array(string()),
+  categories: array(string()),
 })
 ```
 
@@ -38,7 +38,7 @@ npm install json-schema-kit
     "name": { "type": "string" },
     "price": { "type": "number", "description": "Price in dollars" },
     "discount": { "anyOf": [{ "type": "number" }, { "type": "null" }] },
-    "tags": { "type": "array", "items": { "type": "string" } },
+    "categories": { "type": "array", "items": { "type": "string", "enum": ["electronics", "clothing", "books"] } },
     "dimensions": {
       "type": "object",
       "properties": {
@@ -49,7 +49,7 @@ npm install json-schema-kit
       "additionalProperties": false
     }
   },
-  "required": ["name", "price", "discount", "tags", "dimensions"],
+  "required": ["name", "price", "discount", "categories", "dimensions"],
   "additionalProperties": false
 }
 ```
@@ -61,7 +61,7 @@ object({
   name: string(),
   price: number({ description: 'Price in dollars' }),
   discount: nullable(number()),
-  tags: array(string()),
+  categories: array(string({ enum: ['electronics', 'clothing', 'books'] })),
   dimensions: object({
     width: number(),
     height: number(),
