@@ -352,47 +352,50 @@ describe('JSON Schema Kit', () => {
     it('should make string nullable', () => {
       const result = nullable(string())
       expect(result).toEqual({
-        type: ['string', 'null'],
+        anyOf: [{ type: 'string' }, { type: 'null' }],
       })
     })
 
     it('should make number nullable', () => {
       const result = nullable(number({ minimum: 0 }))
       expect(result).toEqual({
-        type: ['number', 'null'],
-        minimum: 0,
+        anyOf: [{ type: 'number', minimum: 0 }, { type: 'null' }],
       })
     })
 
     it('should make integer nullable', () => {
       const result = nullable(integer())
       expect(result).toEqual({
-        type: ['integer', 'null'],
+        anyOf: [{ type: 'integer' }, { type: 'null' }],
       })
     })
 
     it('should make boolean nullable', () => {
       const result = nullable(boolean())
       expect(result).toEqual({
-        type: ['boolean', 'null'],
+        anyOf: [{ type: 'boolean' }, { type: 'null' }],
       })
     })
 
     it('should make object nullable', () => {
       const result = nullable(object({ name: string() }))
       expect(result).toEqual({
-        type: ['object', 'null'],
-        properties: { name: { type: 'string' } },
-        required: ['name'],
-        additionalProperties: false,
+        anyOf: [
+          {
+            type: 'object',
+            properties: { name: { type: 'string' } },
+            required: ['name'],
+            additionalProperties: false,
+          },
+          { type: 'null' },
+        ],
       })
     })
 
     it('should make array nullable', () => {
       const result = nullable(array(string()))
       expect(result).toEqual({
-        type: ['array', 'null'],
-        items: { type: 'string' },
+        anyOf: [{ type: 'array', items: { type: 'string' } }, { type: 'null' }],
       })
     })
 
@@ -445,7 +448,7 @@ describe('JSON Schema Kit', () => {
         properties: {
           name: { type: 'string' },
           price: { type: 'number', description: 'Price in dollars' },
-          discount: { type: ['number', 'null'] },
+          discount: { anyOf: [{ type: 'number' }, { type: 'null' }] },
           tags: { type: 'array', items: { type: 'string' } },
           dimensions: {
             type: 'object',

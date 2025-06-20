@@ -1,4 +1,4 @@
-import type { Schema, StringSchema, NumberSchema, IntegerSchema, BooleanSchema, ObjectSchema, ArraySchema, AnyOfSchema, RefSchema, AnyOfable } from './types'
+import type { Schema, StringSchema, NumberSchema, IntegerSchema, BooleanSchema, ObjectSchema, ArraySchema, AnyOfSchema, RefSchema } from './types'
 
 export function string(properties: Partial<StringSchema> = {}): StringSchema {
   return {
@@ -52,23 +52,14 @@ export function $ref(id: string): RefSchema {
   }
 }
 
-export function anyOf(subschemas: AnyOfable[]): AnyOfSchema {
+export function anyOf(subschemas: Schema[]): AnyOfSchema {
   return {
     anyOf: subschemas,
   }
 }
 
-// If schema doesn't have a `type` property, it will be converted to an AnyOfSchema
-export type NullableSchema<T> = T extends { type: any } ? T : AnyOfSchema
-
-export function nullable<T extends Schema>(schema: T): NullableSchema<T> {
-  if ('type' in schema) {
-    return { ...schema, type: [schema.type, 'null'] } as NullableSchema<T>
-  }
-
-  if ('anyOf' in schema) {
-    return anyOf([...schema.anyOf, { type: 'null' }]) as NullableSchema<T>
-  }
-
-  return anyOf([schema, { type: 'null' }]) as NullableSchema<T>
+export function nullable(schema: Schema): AnyOfSchema {
+  return 'anyOf' in schema
+    ? anyOf([...schema.anyOf, { type: 'null' }]) // "Extend" existing anyOf with null
+    : anyOf([schema, { type: 'null' }]) // Wrap schema in anyOf with null option
 }

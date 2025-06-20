@@ -8,13 +8,13 @@ export type BaseSchema<T> = {
 }
 
 export type StringSchema = BaseSchema<string> & {
-  type: 'string' | ['string', 'null']
+  type: 'string'
   pattern?: string
   format?: string
 }
 
 export type NumberSchema = BaseSchema<number> & {
-  type: 'number' | ['number', 'null']
+  type: 'number'
   multipleOf?: number
   maximum?: number
   exclusiveMaximum?: number
@@ -23,15 +23,15 @@ export type NumberSchema = BaseSchema<number> & {
 }
 
 export type IntegerSchema = Omit<NumberSchema, 'type'> & {
-  type: 'integer' | ['integer', 'null']
+  type: 'integer'
 }
 
 export type BooleanSchema = BaseSchema<boolean> & {
-  type: 'boolean' | ['boolean', 'null']
+  type: 'boolean'
 }
 
 export type ObjectSchema = BaseSchema<Record<string, any>> & {
-  type: 'object' | ['object', 'null']
+  type: 'object'
   properties: Record<string, Schema>
   required: string[]
   additionalProperties: boolean
@@ -39,7 +39,7 @@ export type ObjectSchema = BaseSchema<Record<string, any>> & {
 }
 
 export type ArraySchema = BaseSchema<any[]> & {
-  type: 'array' | ['array', 'null']
+  type: 'array'
   items: Schema
   minItems?: number
   maxItems?: number
@@ -53,7 +53,6 @@ export type RefSchema = {
   $ref: string
 }
 
-export type AnyOfable = ObjectSchema | RefSchema | NullSchema
 export type AnyOfSchema = {
-  anyOf: AnyOfable[]
+  anyOf: Schema[]
 }

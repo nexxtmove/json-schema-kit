@@ -37,7 +37,7 @@ npm install json-schema-kit
   "properties": {
     "name": { "type": "string" },
     "price": { "type": "number", "description": "Price in dollars" },
-    "discount": { "type": ["number", "null"] },
+    "discount": { "anyOf": [{ "type": "number" }, { "type": "null" }] },
     "tags": { "type": "array", "items": { "type": "string" } },
     "dimensions": {
       "type": "object",
