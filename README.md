@@ -104,7 +104,7 @@ const contact = anyOf([
 ## 🤖 OpenAI Structured Outputs
 
 JSON Schema Kit is perfectly suited for OpenAI's Structured Outputs.  
-Here's how to use it with the Vercel AI SDK:
+For example, here's how to use it with the Vercel AI SDK:
 
 ```ts
 const schema = object({
