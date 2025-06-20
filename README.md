@@ -105,16 +105,15 @@ const person = object({
   age: number(),
 })
 
-const team = object(
-  {
-    leader: $ref('person'),
-    members: array($ref('person')),
-  },
-  {
-    $defs: { person },
-  },
-)
+const team = object({
+  leader: $ref('person'),
+  members: array($ref('person')),
+})
+
+team.$defs = { person }
 ```
+
+> Read more about `$ref` and `$defs` in the [JSON Schema Documentation](https://json-schema.org/understanding-json-schema/structuring#dollarref)
 
 ## 🔀 Using Union Types
 
