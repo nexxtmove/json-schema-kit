@@ -101,6 +101,24 @@ const contact = anyOf([
 ])
 ```
 
+## 🤖 OpenAI Structured Outputs
+
+JSON Schema Kit is perfectly suited for OpenAI's Structured Outputs.  
+Here's how to use it with the Vercel AI SDK:
+
+```ts
+const schema = object({
+  summary: string(),
+  sentiment: string({ enum: ['positive', 'neutral', 'negative'] }),
+})
+
+await generateObject({
+  model: openai('...'),
+  schema: jsonSchema(schema),
+  prompt: 'Analyze this review: "Great product, works perfectly!"',
+})
+```
+
 ## 🤔 "But what about Zod?"
 
 Great question! Zod is a versatile and comprehensive library, spanning thousands of lines of code. However, it's not specifically built for generating JSON Schemas, which can lead to unexpected results during conversion. In contrast, JSON Schema Kit provides full control — all in under 100 lines of code.
