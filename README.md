@@ -9,11 +9,12 @@ Some [very simple](https://github.com/nexxtmove/json-schema-kit/blob/main/src/in
 ## ✨ Quick Taste
 
 ```ts
-import { object, string, number, array } from 'json-schema-kit'
+import { object, string, number, array, nullable } from 'json-schema-kit'
 
 object({
   name: string(),
-  price: number({ description: 'Price in dollars' }),
+  price: number({ minimum: 0 }),
+  description: nullable(string()),
   tags: array(string()),
 })
 ```
@@ -68,6 +69,20 @@ object({
 })
 ```
 
+## 📦 What's Included
+
+| Function               | Example                           |
+| ---------------------- | --------------------------------- |
+| `string(props?)`       | `string({ pattern: '^[A-Z]+$' })` |
+| `number(props?)`       | `number({ minimum: 0 })`          |
+| `integer(props?)`      | `integer({ minimum: 1 })`         |
+| `boolean(props?)`      | `boolean()`                       |
+| `object(props, opts?)` | `object({ name: string() })`      |
+| `array(items, props?)` | `array(string())`                 |
+| `nullable(schema)`     | `nullable(string())`              |
+| `$ref(name)`           | `$ref('person')`                  |
+| `anyOf(schemas)`       | `anyOf([string(), number()])`     |
+
 ## 🔗 Using References
 
 Use `$ref` to create reusable schema definitions and reference them throughout your schema:
@@ -96,7 +111,7 @@ Create union types using `anyOf` to allow multiple possible schemas:
 ```ts
 const contactInfo = anyOf([
   object({ email: string() }),
-  object({ phone: string() })
+  object({ phone: string() }),
 ])
 ```
 
