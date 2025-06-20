@@ -145,7 +145,7 @@ describe('JSON Schema Kit', () => {
           description: 'A person object',
           title: 'Person',
           additionalProperties: true,
-        }
+        },
       )
       expect(result).toEqual({
         type: 'object',
@@ -207,7 +207,7 @@ describe('JSON Schema Kit', () => {
         },
         {
           $defs: { person: personSchema },
-        }
+        },
       )
 
       expect(result).toEqual({
@@ -272,7 +272,7 @@ describe('JSON Schema Kit', () => {
         object({
           id: integer(),
           name: string(),
-        })
+        }),
       )
       expect(result).toEqual({
         type: 'array',
@@ -475,7 +475,7 @@ describe('JSON Schema Kit', () => {
         },
         {
           $defs: { person },
-        }
+        },
       )
 
       expect(team).toEqual({
