@@ -69,20 +69,6 @@ object({
 })
 ```
 
-## 📦 What's Included
-
-| Function               | Example                           |
-| ---------------------- | --------------------------------- |
-| `string(props?)`       | `string({ pattern: '^[A-Z]+$' })` |
-| `number(props?)`       | `number({ minimum: 0 })`          |
-| `integer(props?)`      | `integer({ minimum: 1 })`         |
-| `boolean(props?)`      | `boolean()`                       |
-| `object(props, opts?)` | `object({ name: string() })`      |
-| `array(items, props?)` | `array(string())`                 |
-| `nullable(schema)`     | `nullable(string())`              |
-| `$ref(name)`           | `$ref('person')`                  |
-| `anyOf(schemas)`       | `anyOf([string(), number()])`     |
-
 ## 🔗 Using References
 
 Use `$ref` to create reusable schema definitions and reference them throughout your schema:
