@@ -113,7 +113,7 @@ const schema = object({
 })
 
 await generateObject({
-  model: openai('...'),
+  model: openai(...),
   schema: jsonSchema(schema),
   prompt: 'Analyze this review: "Great product, works perfectly!"',
 })
